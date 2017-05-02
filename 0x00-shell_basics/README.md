@@ -44,4 +44,5 @@ Set of basic bash shell usage exercises:
   * Alphanumeric ordering
   * Sort only with digits and letters
   * Listing should endd with new line
-
+19. File type: Holberton
+  Magic file `holberton.mgc` to be used with `file` command to detect files with string `HOLBERTON` at byte-offset 0.
