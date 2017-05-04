@@ -58,8 +58,8 @@ Write a script that changes the owner of the file hello to betty only if it is o
 Write a script that will play the StarWars IV episode in the terminal.
 18. RTFM
 Create a man that looks exactly like this one and passes all checks.
-'''
+```
 ubuntu@ip-172-31-63-244:/tmp/man$ wc 101-man_holberton
  16  89 608 101-man_holberton
 ubuntu@ip-172-31-63-244:/tmp/man$ man ./101-man_holberton
-'''
+```
