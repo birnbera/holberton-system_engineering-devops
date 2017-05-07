@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -RAl | grep -c ^d
+find . -type d \!  -regex '^\.$' | wc -l
