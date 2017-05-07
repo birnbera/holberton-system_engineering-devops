@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -regex '.*\.gif' -type f -printf '%f\n' | sort -fV | rev | cut -b5- | rev
