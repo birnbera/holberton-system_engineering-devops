@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Loop 10 times, displaying "Hello Holberton" 9/10 times. On the 9th
+# iteration display "Hi", instead.
+
+i=1
+while [ $i -le 10 ]
+do
+	echo Holberton School
+	if [ $i == 9 ]
+	then
+		echo Hi
+	fi
+	((i++))
+done
