@@ -4,5 +4,8 @@
 
 for f in *
 do
+    if [ -e "$f" ]
+    then
 	echo "$f" | cut -d '-' -f2-
+    fi
 done
