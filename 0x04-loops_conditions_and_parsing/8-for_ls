@@ -2,7 +2,7 @@
 # Display contents of current directory in list format with the part
 # of the name through the first dash removed.
 
-for f in $(ls -1)
+for f in *
 do
     if [ -e "$f" ]
     then
