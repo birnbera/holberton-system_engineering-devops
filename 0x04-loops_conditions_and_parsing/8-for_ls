@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 # Display contents of current directory in list format with the part
-# of the name through the first dash removed.
+#+ of the name through the first dash removed.
 
 for f in *
 do
-    if [ -e "$f" ]
-    then
-	echo "$f" | cut -d '-' -f2-
-    fi
+    echo "$f" | cut -d'-' -f2-
 done
