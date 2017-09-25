@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 # Script to manage the `manage_my_process` script as a daemon
 
+if [ "$#" -ne 1 ]
+then
+    echo 'Usage: manage_my_process {start|stop|restart}'
+    exit 1
+fi
+
 case "$1" in
     start)
 	./manage_my_process &
@@ -9,17 +15,18 @@ case "$1" in
 	;;
     stop)
 	kill "$(cat /var/run/my_process.pid)"
-	rm /var/run/my_process.pid
+	rm '/var/run/my_process.pid'
 	echo "manage_my_process stopped"
 	;;
     restart)
-	pkill "$(cat /var/run/my_process.pid)"
-	rm /var/run/my_process.pid
+	kill "$(cat /var/run/my_process.pid)"
+	rm '/var/run/my_process.pid'
 	./manage_my_process &
 	echo "$!" > /var/run/my_process.pid
 	echo "manage_my_process restarted"
 	;;
     *)
 	echo 'Usage: manage_my_process {start|stop|restart}'
+	exit 1
 	;;
 esac
