@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 /**
@@ -28,10 +29,10 @@ int main(void)
 	for (i = 0; i < 5; i++)
 	{
 		zombie = fork();
-		if (zombie == -1)
+		if (zombie < 0)
 			perror("fork");
-		if (zombie == 0)
-			_exit(0);
+		else if (zombie == 0)
+			exit(0);
 		else
 			printf("Zombie process created, PID: %ld\n",
 			       (long) zombie);
