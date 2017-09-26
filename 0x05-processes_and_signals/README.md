@@ -156,3 +156,122 @@
 
 <!-- Task Body -->
   <p>Write a Bash script that kills the process <code>7-highlander</code>.</p>
+  <h4 class="task">
+    9. Process and PID file
+      <span class="alert alert-info mandatory-optional">
+        #advanced
+      </span>
+  </h4>
+
+
+  <!-- Progress vs Score -->
+
+<!-- Task Body -->
+  <p>Write a Bash script that: </p>
+
+<ul>
+<li>Creates the file <code>/var/run/holbertonscript.pid</code> containing its PID</li>
+<li>Displays <code>To infinity and beyond</code> indefinitely</li>
+<li>Displays <code>I hate the kill command</code> when receiving a SIGTERM signal</li>
+<li>Displays <code>Y U no love me?!</code> when receiving a SIGINT signal</li>
+<li>Deletes the file <code>/var/run/holbertonscript.pid</code> and terminate itself when receiving a SIGQUIT or SIGTERM signal</li>
+</ul>
+  <h4 class="task">
+    10. Manage my process
+      <span class="alert alert-info mandatory-optional">
+        #advanced
+      </span>
+  </h4>
+
+
+  <!-- Progress vs Score -->
+
+<!-- Task Body -->
+  <p><img src="http://i.imgur.com/o9q0iPA.jpg" alt="Priest stopping data center with /etc/init.d/DEAMON STOP"></p>
+
+<p>Read:</p>
+
+<ul>
+<li><a href="http://bashitout.com/2013/05/18/Ampersands-on-the-command-line.html">&amp;</a></li>
+<li><a href="http://www.ghacks.net/2009/04/04/get-to-know-linux-the-etcinitd-directory/">init.d</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Daemon_(computing)">Daemon</a></li>
+<li><a href="http://wiki.bash-hackers.org/scripting/posparams">Positional parameters</a></li>
+</ul>
+
+<p>man: <code>sudo</code></p>
+
+<p>Programs that are detached from the terminal and running in the background are called daemons or processes, need to be managed. The general minimum set of instructions is: <code>start</code>, <code>restart</code> and <code>stop</code>. The most popular way of doing so on Unix system is to use the init scripts.</p>
+
+<p>Write a <code>manage_my_process</code> Bash script that: </p>
+
+<ul>
+<li>Indefinitely writes <code>I am alive!</code> to the file <code>/tmp/my_process</code></li>
+<li>In between every <code>I am alive!</code> message, the program should pause for 2 seconds</li>
+</ul>
+
+<p>Write Bash (init) script <code>101-manage_my_process</code> that manages <code>manage_my_process</code></p>
+
+<p>Requirements:</p>
+
+<ul>
+<li>When passing the argument <code>start</code>:
+
+<ul>
+<li>Starts <code>manage_my_process</code></li>
+<li>Creates a file containing its PID in <code>/var/run/my_process.pid</code></li>
+<li>Displays <code>manage_my_process started</code></li>
+</ul></li>
+<li>When passing the argument <code>stop</code>: 
+
+<ul>
+<li>Stops <code>manage_my_process</code><br></li>
+<li>Deletes the file  <code>/var/run/my_process.pid</code></li>
+<li>Displays <code>manage_my_process stopped</code></li>
+</ul></li>
+<li>When passing the argument <code>restart</code>
+
+<ul>
+<li>Stops <code>manage_my_process</code><br></li>
+<li>Deletes the file  <code>/var/run/my_process.pid</code></li>
+<li>Starts <code>manage_my_process</code></li>
+<li>Creates a file containing its PID in <code>/var/run/my_process.pid</code></li>
+<li>Displays <code>manage_my_process restarted</code></li>
+</ul></li>
+<li>Displays <code>Usage: manage_my_process {start|stop|restart}</code> if any other argument or no argument is passed</li>
+</ul>
+
+<p>Note that this init script is far from being perfect (but good enough for the sake of manipulating process and PID file), for example we do not handle the case where we check if a process is already running when doing <code>./101-manage_my_process start</code>, in our case it will simply create a new process instead of saying that it is already started.</p>
+  <h4 class="task">
+    11. Zombie
+      <span class="alert alert-info mandatory-optional">
+        #advanced
+      </span>
+  </h4>
+
+
+  <!-- Progress vs Score -->
+
+<!-- Task Body -->
+  <p><a href="http://fineartamerica.com/featured/zombie-seahorse-lauren-b.html"><img src="http://i.imgur.com/C6mO7b3.jpg" alt="Zombie searhose"></a></p>
+
+<p>Read <a href="https://zombieprocess.wordpress.com/what-is-a-zombie-process/">what a zombie process is</a>.</p>
+
+<p>Write a C program that creates 5 zombie processes.</p>
+
+<p>Requirements:</p>
+
+<ul>
+<li>For every zombie process created, it displays <code>Zombie process created, PID: ZOMBIE_PID</code></li>
+<li>Your code should use the Betty style. It will be checked using <code>betty-style.pl</code> and <code>betty-doc.pl</code></li>
+<li>When you code is done creating the parent process and the zombies, use the function bellow</li>
+</ul>
+
+<pre><code>int infinite_while(void)
+{
+    while (1)
+    {
+        sleep(1);
+    }
+    return (0);
+}
+</code></pre>
