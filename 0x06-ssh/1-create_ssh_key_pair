@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script to create new RSA key pair with 4096 bits called `holberton`
+
+ssh-keygen -b 4096 -t rsa -N password -f holberton

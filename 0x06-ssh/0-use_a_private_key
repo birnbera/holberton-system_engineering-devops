@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Use a private key to login to my server by ssh
+
+ssh -i ~/.ssh/holberton ubuntu@142.44.167.235
