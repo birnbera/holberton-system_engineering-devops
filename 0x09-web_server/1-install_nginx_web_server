@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Install and setup new nginx server
+
+apt-get install -y nginx
+if [ $? -eq 0 ]
+then
+    echo -e "http {\n\troot /var/www/holberton;\n\tindex index.html;\
+\n\tserver {\n\t\tlisten 80;\n\t}\n}" > \
+	/etc/nginx/sites-available/holberton
+    echo "Holberton School" > /var/www/holberton/index.html
+    nginx -s reload
+else
+    echo "Could not install nginx"
+    exit 1
+fi
+exit 0
