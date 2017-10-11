@@ -8,12 +8,13 @@ then
     echo -e \
 "http {
     root /var/www/holberton;
-    index index.html;
     server {
         listen 80;
+        server_name pearmountain.space;
         rewrite ^/redirect_me$ \
 https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
         location / {
+            index index.html;
         }
     }
 }
