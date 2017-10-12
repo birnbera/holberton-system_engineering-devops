@@ -5,6 +5,7 @@ apt-get update -y && \
 apt-get install -y nginx
 if [ $? -eq 0 ]
 then
+    service nginx start
     echo -e \
 "http {
     root /var/www/holberton;
@@ -29,12 +30,7 @@ events {
 	/var/www/holberton/index.html
     echo "Ceci n'est pas une page" > \
 	/var/www/holberton/404_file_not_found.html
-    service nginx start
-    if [ $? -ne 0 ]
-    then
-	"Problem starting nginx"
-	exit 1
-    fi
+    nginx -s reload
 else
     echo "Could not install nginx"
     exit 1
