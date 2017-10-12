@@ -5,6 +5,7 @@ apt-get update -y && \
 apt-get install -y nginx
 if [ $? -eq 0 ]
 then
+    service nginx start
     echo -e \
 "http {
     root /var/www/holberton;
