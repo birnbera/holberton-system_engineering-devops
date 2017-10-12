@@ -23,12 +23,7 @@ events {
     mkdir -p /var/www/holberton
     echo "Holberton School" > \
 	/var/www/holberton/index.html
-    service nginx start
-    if [ $? -ne 0 ]
-    then
-	"Problem starting nginx"
-	exit 1
-    fi
+    service nginx restart
 else
     echo "Could not install nginx"
     exit 1
