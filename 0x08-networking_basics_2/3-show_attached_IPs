@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# List all active IPv4 IPs on the local machine
+netstat -4an | tail -n+3 | cut -d' ' -f16 | cut -d':' -f1 | sort -u | \
+grep -v '0.0.0.0'
