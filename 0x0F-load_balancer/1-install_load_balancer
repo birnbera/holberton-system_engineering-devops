@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Install HAproxy on clean ubuntu 14.04 machine and setup to proxy requests
+# between 144-web-01 and 144-web-02.
+
+apt-get update -y && \
+apt-get install -y software-properties-common && \
+add-apt-repository -y ppa:vbernat/haproxy-1.7 && \
+apt-get update -y && \
+apt-get install -y haproxy && \
+if [ -e '/etc/haproxy/haproxy.cfg.orig' ]
+then
+    cat /etc/haproxy/haproxy.cfg.orig > /etc/haproxy/haproxy.cfg
+else
+    cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.orig
+fi
+echo -e \
+"\nlisten load_balancer
+\tbind :80
+\tmode http
+\tstats enable
+\tstats uri /haproxy?stats
+\tbalance roundrobin
+\tserver 144-web-01 142.44.167.235:80 check
+\tserver 144-web-02 144.217.246.199:80 check" \
+    >> /etc/haproxy/haproxy.cfg
+service haproxy restart
