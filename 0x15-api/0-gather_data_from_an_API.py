@@ -5,27 +5,24 @@ import sys
 import requests
 
 
-todo_endpoint = "https://jsonplaceholder.typicode.com/todos"
-user_endpoint = "https://jsonplaceholder.typicode.com/users"
+user_endpoint = "https://jsonplaceholder.typicode.com/users/"
 
 
 def get_todos_by_userid(user_id):
     """Get TODO list for a user identified by `user_id`"""
-    payload = {'userId': user_id}
-    todos = requests.get(todo_endpoint, params=payload)
-    try:
+    todos = requests.get(user_endpoint + user_id + '/todos')
+    if todos.status_code == 200:
         return todos.json()
-    except:
+    else:
         exit(1)
 
 
 def get_name_by_userid(user_id):
     """Get the full name of auser identified by `user_id`"""
-    payload = {'id': user_id}
-    user = requests.get(user_endpoint, params=payload)
-    try:
-        return user.json()[0]
-    except:
+    user = requests.get(user_endpoint + user_id)
+    if user.status_code == 200:
+        return user.json()
+    else:
         exit(1)
 
 
@@ -37,7 +34,7 @@ def format_user_todos(user_id):
     output = "Employee {} is done with tasks({}/{}):\n\t".format(name,
                                                                  len(complete),
                                                                  len(todos))
-    output += '\n\t'.join(map(lambda c: c.get('title'), complete))
+    output += '\n\t'.join(map(lambda c: c.get('title', ''), complete))
     return output
 
 
