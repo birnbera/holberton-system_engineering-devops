@@ -15,17 +15,17 @@ def get_todos_by_userid(user_id):
         todos.raise_for_status()
         return todos.json()
     except:
-        exit
+        exit(1)
 
 
 def get_user_by_userid(user_id):
-    """Get the full name of auser identified by `user_id`"""
+    """Get user identified by `user_id`"""
     user = requests.get(user_endpoint + user_id)
     try:
         user.raise_for_status()
         return user.json()
     except:
-        exit
+        exit(1)
 
 
 def format_user_todos(user_id):
@@ -43,7 +43,10 @@ def format_user_todos(user_id):
 
 
 if __name__ == "__main__":
+    """Get user_id as command line parameter and print out the completed
+    tasks for the user associated with that id"""
     if len(sys.argv) < 2:
         print("Usage: ./0-gather_data_from_an_API.py <employee_id>")
+        exit(1)
     user_id = sys.argv[1]
     print(format_user_todos(user_id))
