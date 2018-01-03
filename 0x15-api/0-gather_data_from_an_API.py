@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """Script to get information from the TODO api endpoint as it
 pertains to a particular employee identified by ID."""
-import sys
 import requests
+import sys
 
 
 user_endpoint = "https://jsonplaceholder.typicode.com/users/"
