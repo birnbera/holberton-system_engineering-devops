@@ -36,10 +36,10 @@ def format_user_todos(user_id):
     output = "Employee {} is done with tasks({}/{}):".format(name,
                                                              len(completed),
                                                              len(todos))
-    titles = '\n\t'.join(map(lambda c: c.get('title', ''), completed))
+    titles = '\n\t '.join(map(lambda c: c.get('title', ''), completed))
     if not titles:
         return output
-    return output + '\n\t' + titles
+    return output + '\n\t ' + titles
 
 
 if __name__ == "__main__":
