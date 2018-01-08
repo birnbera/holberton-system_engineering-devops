@@ -13,8 +13,8 @@ def count_words(subreddit, word_list, word_counts={}, after=None):
             allow_redirects=False)
     try:
         r.raise_for_status()
-    except Exception as e:
-        print(e)
+    except:
+        print()
     else:
         try:
             for word in word_list:
@@ -37,5 +37,5 @@ def count_words(subreddit, word_list, word_counts={}, after=None):
             else:
                 return count_words(subreddit, word_list,
                                    word_counts=word_counts, after=after)
-        except Exception as e:
-            print(e)
+        except:
+            print()
