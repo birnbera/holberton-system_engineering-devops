@@ -30,11 +30,14 @@ def count_words(subreddit, word_list, word_counts={}, after=None):
                                     for word in word_list})
             after = r.json().get('data').get('after')
             if after is None:
-                for word, count in sorted(word_counts.items(),
-                                          key=lambda i: i[1],
-                                          reverse=True):
-                    if count > 0:
-                        print("{}: {}".format(word, count))
+                if all(map(lambda w: w[1] == 0, word_counts.items())):
+                    print()
+                else:
+                    for word, count in sorted(word_counts.items(),
+                                              key=lambda i: i[1],
+                                              reverse=True):
+                        if count > 0:
+                            print("{}: {}".format(word, count))
             else:
                 return count_words(subreddit, word_list,
                                    word_counts=word_counts, after=after)
