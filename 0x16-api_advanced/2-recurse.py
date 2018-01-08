@@ -12,7 +12,7 @@ def recurse(subreddit, hot_posts=[], after=None):
     try:
         r.raise_for_status()
     except:
-        return hot_posts
+        return None
     else:
         try:
             children = r.json().get('data').get('children')
@@ -24,4 +24,4 @@ def recurse(subreddit, hot_posts=[], after=None):
             else:
                 return recurse(subreddit, hot_posts, after=after)
         except:
-            return hot_posts
+            return None
