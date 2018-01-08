@@ -14,7 +14,7 @@ def count_words(subreddit, word_list, word_counts={}, after=None):
     try:
         r.raise_for_status()
     except:
-        print()
+        pass
     else:
         try:
             for word in word_list:
@@ -39,4 +39,4 @@ def count_words(subreddit, word_list, word_counts={}, after=None):
                 return count_words(subreddit, word_list,
                                    word_counts=word_counts, after=after)
         except:
-            print()
+            pass
