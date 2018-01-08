@@ -21,13 +21,12 @@ def count_words(subreddit, word_list, word_counts={}, after=None):
                 word_counts.setdefault(word, 0)
             children = r.json().get('data').get('children')
             for c in children:
-                word_counts.update({word: word_counts.get(word) +
-                                    sum(map(lambda w: w == word.lower(),
-                                            c.get('data')
-                                            .get('title')
-                                            .lower()
-                                            .split()))
-                                    for word in word_list})
+                for word in word_list:
+                    word_counts[word] += sum(map(lambda w: w == word.lower(),
+                                                 c.get('data')
+                                                 .get('title')
+                                                 .lower()
+                                                 .split()))
             after = r.json().get('data').get('after')
             if after is None:
                 if all(map(lambda w: w[1] == 0, word_counts.items())):
