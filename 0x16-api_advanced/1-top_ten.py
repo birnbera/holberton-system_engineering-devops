@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Function to GET the top 10 hot posts in the given `subreddit`"""
 from requests import get
-from pprint import pprint
 
 
 def top_ten(subreddit):
