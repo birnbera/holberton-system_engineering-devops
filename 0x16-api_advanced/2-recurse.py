@@ -16,8 +16,8 @@ def recurse(subreddit, hot_posts=[], after=None):
     else:
         try:
             children = r.json().get('data').get('children')
-            for child in children:
-                hot_posts.append(child.get('data').get('title'))
+            hot_posts.extend(map(lambda c: c.get('data').get('title'),
+                                 children))
             after = r.json().get('data').get('after')
             if after is None:
                 return hot_posts
