@@ -7,8 +7,12 @@ from requests import get
 def count_words(subreddit, word_list, word_counts={}, after=None):
     """Recursively GET all the count of words from `word_list` occurring
     in the hot posts of `subreddit`"""
+    word_list = list(set(word_list))
     r = get("https://www.reddit.com/r/{}/hot.json".format(subreddit),
-            params={"raw_json": 1, "g": "GLOBAL", "after": after},
+            params={"raw_json": 1,
+                    "g": "GLOBAL",
+                    "after": after,
+                    "limit": 100},
             headers={"User-Agent": "Andrew from Holberton"},
             allow_redirects=False)
     try:
