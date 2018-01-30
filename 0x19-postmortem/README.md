@@ -1,7 +1,7 @@
 # 0x19. Postmortem
 This postmortem examines the root cause and resolution of an issue that I faced during a commando project (day long hackathon) at Holberton.
 
-<p align="center"><img src="https://memegenerator.net/img/instances/66058437/psst-over-here.jpg"/></p>
+<p align="center"><img src="https://memegenerator.net/img/instances/66058437/psst-over-here.jpg"/></br>u + WSGI = uWSGI</p>
 
 ## Issue Summary
 For our hackathon we were tasked with creating a web application that summarized a user's GitHub commit history by authenticating a user via OAuth with GitHub's API. As a team, our group's relative unfamiliarity with OAuth and the authentication workflow presented challenges when debugging API errors. Ultimately, we were able to resolve our issues with OAuth by comparing our intended requests to the API and the actual requests that were being sent using debugging statements in the backend code. The issue centered around the fact that environment variables exported from the invoking shell were not accessible by processes being managed by a uWSGI application server being run as a daemon.
